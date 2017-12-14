@@ -1,35 +1,31 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import GoogleMap from '../components/GoogleMap';
-import SearchBar from './SearchBar'
+import SearchBar from './SearchBar';
 
 class ParcelshopList extends Component {
+    constructor(props) {
+        super(props);
 
-    renderLocation(location) {
-        const lat = locationData.geomerty.bounds.northeast.lat;
-        const lng = locationData.geomerty.bounds.northeast.lat;
+        this.state = {lat:-34.397 , lng: 150.644}
 
-        console.log('hit');
-        console.log(lat);
-        console.log(lng);
+    }
 
+    renderLocation() {
+        this.
+        console.log('Render location hit');
     }
 
     render() {
         return (
             <div>
                 <SearchBar />
-                <GoogleMap  />
-                {(this.renderLocation)}
+                <button onClick={() => this.setState({lat: 53.800755, lng: -1.549077})}>Leeds</button>
+                <GoogleMap lat={this.state.lat} lng={this.state.lng}  />
             </div>
 
         );
     }
 }
 
-function mapStateToProps({ location }) {
-    return { location };
-    console.log(location);
-}
-
-export default connect(mapStateToProps)(ParcelshopList);
+export default ParcelshopList;

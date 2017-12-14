@@ -15,11 +15,11 @@ class SearchBar extends Component {
 
     onInputChange(event) {
         this.setState({ term: event.target.value })
+
     }
 
     onFormSubmit(event) {
         event.preventDefault();
-
         this.props.fetchLocation(this.state.term);
         this.setState({term: ''})
     }
@@ -27,6 +27,8 @@ class SearchBar extends Component {
 
     render() {
         return (
+            <div>
+
             <form onSubmit={this.onFormSubmit} className="input-group">
                 <input
                     placeholder="Search for a parcelshop"
@@ -39,6 +41,7 @@ class SearchBar extends Component {
                     </button>
                 </span>
             </form>
+        </div>
         );
     }
 }

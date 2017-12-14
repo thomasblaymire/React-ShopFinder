@@ -1,21 +1,24 @@
 import React, {Component} from 'react';
 
 class GoogleMap extends Component {
+    shouldComponentUpdate() {
+        return false;
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.map.panTo({lat: nextProps.lat, lng: nextProps.lng});
+    }
+
     componentDidMount() {
-        new google.maps.Map(this.refs.map, {
-            zoom: 12,
-            center: {
-                lat: 53.798333,
-                lng: -1.538291
-            }
+        this.map = new google.maps.Map(this.refs.map, {
+            center: { lat: this.props.lat, lng: this.props.lng },
+            zoom:9
         });
     }
 
     render() {
         return (
-            <div>
-                <div className="google-map" ref="map" />
-            </div>
+                <div id="map" className="google-map" ref="map" />
         );
     }
 }
